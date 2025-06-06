@@ -27,14 +27,14 @@ if not nba_teams:
 dict_nba_team = one_dict(nba_teams)
 df_teams = pd.DataFrame(dict_nba_team)
 
-# find Warriors team
+# find the Warriors team
 df_warriors = df_teams[df_teams['nickname'] == 'Warriors']
 if df_warriors.empty:
     raise ValueError("Could not find Warriors in NBA teams.")
 
 id_warriors = df_warriors['id'].values[0]
 
-# get the Warriors games
+# get the Warriors game
 gamefinder = leaguegamefinder.LeagueGameFinder(team_id_nullable=id_warriors)
 games = gamefinder.get_data_frames()[0]
 
